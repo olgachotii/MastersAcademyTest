@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Consul</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        background-color: #90d382;
+      }
+
+      #button {
+        border-radius: 12px;
+        background-color: #ffffff;
+        border: 2px solid #4caf50;
+        color: #000000;
+        padding: 15px 32px;
+        text-align: center;
+        font-size: 16px;
+        margin: 4px 2px;
+      }
+
+      #button:hover {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .inputcl {
+        border-radius: 12px;
+        background-color: #ffffff;
+        border: 2px solid #4caf50;
+        color: #000000;
+        padding: 15px 32px;
+        text-align: center;
+        font-size: 16px;
+        margin: 4px 2px;
+      }
+
+      #chat {
+        border-radius: 12px;
+        padding: 15px 32px;
+        font-size: 60px;
+        text-align: center;
+      }
+
+      div.input {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        overflow: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="consultant">
+      <div class="input">
+        <button id="button" class="btncl" onclick="color()">Send</button
+        ><input id="text" type="text" class="inputcl" />
+      </div>
+      <div id="chat" class="chatcl"></div>
+    </div>
+    <script>
+      const sendme = () => {
+        document.getElementById("chat").innerHTML = document.getElementById(
+          "text"
+        ).value;
+        document.getElementById("text").value = "";
+      };
+
+      document.getElementById("button").addEventListener("click", sendme);
+
+      const color = () => {
+        var str = document.getElementById("text").value;
+
+        let i = 0;
+        while (i < str.length) {
+          if (
+            ((str[i].charCodeAt() >= 48 && str[i].charCodeAt() <= 57) ||
+              (str[i].charCodeAt() >= 65 && str[i].charCodeAt() <= 90) ||
+              (str[i].charCodeAt() >= 97 && str[i].charCodeAt() <= 122)) &&
+            str.length > 3
+          ) {
+            document.getElementById("chat").style.backgroundColor = "green";
+          } else {
+            document.getElementById("chat").style.backgroundColor = "red";
+          }
+          i = i + 1;
+        }
+      };
+    </script>
+  </body>
+</html>
